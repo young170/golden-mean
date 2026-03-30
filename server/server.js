@@ -9,7 +9,7 @@ app.use(express.json());
 const questions = [
   { id: 0, x: "much", y: "Coffee", unit: "cups", min: 0, max: 20 },
   { id: 1, x: "fast", y: "Driving", unit: "mph", min: 0, max: 120 },
-  { id: 2, x: "late", y: "Staying Up", unit: "am", min: 9, max: 5 },
+  { id: 2, x: "late", y: "Staying Up", unit: "am", min: 0, max: 5 },
 ];
 
 // Mock Store for Votes: { questionId: [val1, val2, ...] }
@@ -47,6 +47,7 @@ app.get("/api/today", (req, res) => {
     today: questions[currentIndex],
     tomorrow: questions[nextIndex].y,
     stats,
+    votes: votes[currentIndex],
   });
 });
 
