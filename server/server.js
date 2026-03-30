@@ -2,7 +2,11 @@ import express from "express";
 import cors from "cors";
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://young170.github.io"],
+  })
+);
 app.use(express.json());
 
 // Mock Database of Questions

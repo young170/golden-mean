@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
+const API_BASE = "https://golden-mean.onrender.com";
+
 /* ─── Stepper ────────────────────────────────────────────────────────────────
    Unified pointer events (mouse + touch via onPointer*) so onClick and
    onTouchStart never conflict.
@@ -270,7 +272,7 @@ const App = () => {
   const [inputVal, setInputVal] = useState(null);
 
   const fetchData = async () => {
-    const res = await fetch("http://localhost:5000/api/today");
+    const res = await fetch(`${API_BASE}/api/today`);
     const json = await res.json();
     console.log("fetchData() API response:", json);
     setData(json);
@@ -288,7 +290,7 @@ const App = () => {
   }, []);
 
   const submitVote = async () => {
-    await fetch("http://localhost:5000/api/submit", {
+    await fetch(`${API_BASE}/api/submit`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ questionId: data.today.id, value: inputVal }),
